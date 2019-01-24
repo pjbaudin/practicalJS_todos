@@ -27,3 +27,10 @@ modify function to operate correctly with new setup
 add toggleCompleted function to change the completion properties to the opposite of what it is
 
 Run basic test to demonstrate operation
+
+## todo_v5
+
+Modify displayTodos:
+- function to loop over the items in the todos array
+- add conditional statement to print message if the todo list is empty
+- print whether the task is completed or not
