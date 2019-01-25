@@ -46,3 +46,10 @@ Create function for toggle all:
 Run basic test to demonstrate operation
 
 
+## todo v_7
+
+Setup app folder and basic html with bootstrap and script.js
+
+Create two buttons with event listener with function display and toggle all
+
+Note: browser-sync start --server --directory --files "*"
