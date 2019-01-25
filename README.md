@@ -34,3 +34,15 @@ Modify displayTodos:
 - function to loop over the items in the todos array
 - add conditional statement to print message if the todo list is empty
 - print whether the task is completed or not
+
+Run basic test to demonstrate operation
+
+## todo_v6
+
+Create function for toggle all:
+- if everything is true make everything false
+- else make everything true
+
+Run basic test to demonstrate operation
+
+
