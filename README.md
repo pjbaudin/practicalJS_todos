@@ -53,3 +53,9 @@ Setup app folder and basic html with bootstrap and script.js
 Create two buttons with event listener with function display and toggle all
 
 Note: browser-sync start --server --directory --files "*"
+
+## todo v_8
+
+Refactoring js script for webapp
+- create a handlers variable
+- modify html code to add onclick as event listener

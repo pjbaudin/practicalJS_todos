@@ -75,17 +75,18 @@ var todolist = {
 };
 
 
-// Get access to the display todos buttons
-var displayTodosButton = document.getElementById('displayTodosButton');
-// Get access to the toggle all button
-var toggleAllButton = document.getElementById('toggleAllButton');
+// Refactoring and creating handlers variable to handle many function
+var handlers = {
+    displayTodos: function() {
+        todolist.displayTodos();
+    },
+    toggleAll: function() {
+        todolist.toggleAll();
+    },
+    addTodo: function(todoText) {
+       var addTodoInput = document.getElementById("addTodoInput");
+       todolist.addTodo(addTodoInput.value);
+       addTodoInput.value = '';
+    },
 
-// Run displayTodos method when click on todos button
-displayTodosButton.addEventListener('click', function() {
-    todolist.displayTodos();
-});
-
-// Event listener and run toggle all function
-toggleAllButton.addEventListener('click', function() {
-    todolist.toggleAll();
-})
+};
