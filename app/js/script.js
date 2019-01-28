@@ -80,13 +80,29 @@ var handlers = {
     displayTodos: function() {
         todolist.displayTodos();
     },
-    toggleAll: function() {
-        todolist.toggleAll();
-    },
-    addTodo: function(todoText) {
+    addTodo: function() {
        var addTodoInput = document.getElementById("addTodoInput");
        todolist.addTodo(addTodoInput.value);
        addTodoInput.value = '';
     },
-
+    changeTodo: function() {
+        var changeTodoPositionInput = document.getElementById("changeTodoPositionInput");
+        var changeTodoTextInput = document.getElementById("changeTodoTextInput");
+        todolist.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
+        changeTodoPositionInput.value = "";
+        changeTodoTextInput.value = "";
+    },
+    deleteTodo: function() {
+        var deleteTodoPositionInput = document.getElementById("deleteTodoPositionInput");
+        todolist.deleteTodo(deleteTodoPositionInput.valueAsNumber);
+        deleteTodoPositionInput.value = "";
+    },
+    toggleCompleted: function() {
+        var toggleTodoPositionInput = document.getElementById("toggleTodoPositionInput");
+        todolist.toggleCompleted(toggleTodoPositionInput.valueAsNumber);
+        toggleTodoPositionInput.value = "";
+    },
+    toggleAll: function() {
+        todolist.toggleAll();
+    }
 };
