@@ -6,57 +6,37 @@
 // define todos variable
 var todolist = {
     todos: [],
-    // display the todo list
-    displayTodos: function() {
-        if (this.todos.length === 0) {
-            console.log("Your todo list is empty!")
-        } else {
-            for (var i = 0; i < this.todos.length; i++) {
-                if (this.todos[i].completed === true) {
-                    console.log('(x) ', this.todos[i].todoText);
-                } else {
-                    console.log("( ) ", this.todos[i].todoText);
-                }
-            }
-        }
-    },
     // add new todos object and display the new todo list
     addTodo: function(todoText) {
         this.todos.push({
             todoText: todoText,
             completed: false,
         });
-        this.displayTodos();
     },
     // change item in the todo list
     changeTodo: function(position, todoText) {
         this.todos[position].todoText = todoText;
-        this.displayTodos();
     },
     // delete a todo item
     deleteTodo: function(position) {
         this.todos.splice(position, 1);
-        this.displayTodos();
     },
     // toggle completed to flip the completed property
     toggleCompleted: function(position) {
         var todo = this.todos[position]
         todo.completed = !todo.completed;
-        this.displayTodos();
     },
 
     // toggle all completed
     toggleAll: function() {
         var totalTodos = this.todos.length;
         var completedTodos = 0;
-
         // Get number of completed todos
         for (var i = 0; i < totalTodos; i++) {
             if (this.todos[i].completed === true) {
                 completedTodos++;
             }
         }
-
         // Case 1: if everything is true, make everything false
         if (completedTodos === totalTodos) {
             // Make everything false
@@ -69,21 +49,17 @@ var todolist = {
                 this.todos[i].completed = true
             }
         }
-
-        this.displayTodos();
     },
 };
 
 
 // Refactoring and creating handlers variable to handle many function
 var handlers = {
-    displayTodos: function() {
-        todolist.displayTodos();
-    },
     addTodo: function() {
        var addTodoInput = document.getElementById("addTodoInput");
        todolist.addTodo(addTodoInput.value);
        addTodoInput.value = '';
+       view.displayTodos();
     },
     changeTodo: function() {
         var changeTodoPositionInput = document.getElementById("changeTodoPositionInput");
@@ -91,18 +67,56 @@ var handlers = {
         todolist.changeTodo(changeTodoPositionInput.valueAsNumber, changeTodoTextInput.value);
         changeTodoPositionInput.value = "";
         changeTodoTextInput.value = "";
+        view.displayTodos();
     },
     deleteTodo: function() {
         var deleteTodoPositionInput = document.getElementById("deleteTodoPositionInput");
         todolist.deleteTodo(deleteTodoPositionInput.valueAsNumber);
         deleteTodoPositionInput.value = "";
+        view.displayTodos();
     },
     toggleCompleted: function() {
         var toggleTodoPositionInput = document.getElementById("toggleTodoPositionInput");
         todolist.toggleCompleted(toggleTodoPositionInput.valueAsNumber);
         toggleTodoPositionInput.value = "";
+        view.displayTodos();
     },
     toggleAll: function() {
         todolist.toggleAll();
+        view.displayTodos();
+    },
+};
+
+var view = {
+    displayTodos: function() {
+        //  define selector and clear the inner html
+        var todosUl = document.querySelector('ul');
+        todosUl.innerHTML = ''
+        for (var i = 0; i < todolist.todos.length; i++) {
+            // define todo variable
+            var todo = todolist.todos[i];
+            
+            // define html element to create
+            var todoLi = document.createElement('li');
+
+            // add attibute to li created element
+            todoLi.textContent = todo.todoText;  
+            todoLi.setAttribute('class', 'list-group-item');
+
+            // create checkbox element
+            var todoCheck = document.createElement('input');
+            todoCheck.setAttribute('type', 'checkbox');
+            todoCheck.setAttribute('class', 'form=check-input');
+
+            // set check box attribute
+            if (todo.completed === true) {
+                todoCheck.setAttribute('checked', 'checked');
+            };
+            
+            // append li to ul
+            todosUl.appendChild(todoLi);
+            // append checkbox to li
+            todoLi.appendChild(todoCheck); 
+        }
     }
 };

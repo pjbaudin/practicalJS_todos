@@ -59,3 +59,7 @@ Note: browser-sync start --server --directory --files "*"
 Refactoring js script for webapp
 - create a handlers variable
 - modify html code to add onclick as event listener
+
+## todo_v9
+
+Escaping the console by creating a view method to render a list of the items in the todo list and a checkbox to indicate the completion status
