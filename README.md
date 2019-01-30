@@ -63,3 +63,9 @@ Refactoring js script for webapp
 ## todo_v9
 
 Escaping the console by creating a view method to render a list of the items in the todo list and a checkbox to indicate the completion status
+
+## todo_v10
+
+Create a delete button and list it with all the items added in the todo list
+
+Add an event listener to delete a todo item
