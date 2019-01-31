@@ -69,3 +69,9 @@ Escaping the console by creating a view method to render a list of the items in 
 Create a delete button and list it with all the items added in the todo list
 
 Add an event listener to delete a todo item
+
+## todo v_11
+
+Refactoring all the for loops with forEach method
+
+Use this as additional argument of forEach to be used with the callback function

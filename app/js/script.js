@@ -32,23 +32,20 @@ var todolist = {
         var totalTodos = this.todos.length;
         var completedTodos = 0;
         // Get number of completed todos
-        for (var i = 0; i < totalTodos; i++) {
-            if (this.todos[i].completed === true) {
-                completedTodos++;
+        this.todos.forEach(function(todo) {
+            if (todo.completed === true) {
+                completedTodos++
             }
-        }
-        // Case 1: if everything is true, make everything false
-        if (completedTodos === totalTodos) {
-            // Make everything false
-            for (var i = 0; i < totalTodos; i++) {
-                this.todos[i].completed = false
-            }
-        } else {
+        });
+        this.todos.forEach(function(todo) {
+            // Case 1: if everything is true, make everything false
+            if (completedTodos === totalTodos) {
+                todo.completed = false;
             // Case 2: make everything true
-            for (var i = 0; i < totalTodos; i++) {
-                this.todos[i].completed = true
-            }
-        }
+            } else {
+                todo.completed = true;
+            };
+        });
     },
 };
 
@@ -90,10 +87,8 @@ var view = {
         //  define selector and clear the inner html
         var todosUl = document.querySelector('ul');
         todosUl.innerHTML = ''
-        for (var i = 0; i < todolist.todos.length; i++) {
-            // define todo variable
-            var todo = todolist.todos[i];
-            
+
+        todolist.todos.forEach(function(todo, position) {
             // define html element to create
             var todoLi = document.createElement('li');
 
@@ -115,12 +110,14 @@ var view = {
             todosUl.appendChild(todoLi);
             
             // set id to i for the todoLi property
-            todoLi.id = i;
+            todoLi.id = position;
             // append checkbox to li
             todoLi.appendChild(todoCheck);
             //  append delete button
             todoLi.append(this.createDeleteButton());
-        }
+
+        },
+        this);
     },
     createDeleteButton: function() {
         var deleteButton = document.createElement('button');
